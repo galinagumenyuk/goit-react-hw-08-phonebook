@@ -1,17 +1,21 @@
-import { Container, ListTitle } from "./App.styled";
-import Form from "./components/form/Form.jsx";
-import Contacts from "./components/contacts/Contacts.jsx";
-import Filter from "./components/filter/Filter.jsx";
+import AppBar from "./components/AppBar/AppBar.jsx";
+import PhoneBook from "./components/PhoneBook/PhoneBook.jsx";
+import Home from "./components/Home/Home.jsx";
+import Register from "./components/Register/Register.jsx";
+import Login from "./components/Login/Login.jsx";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <Container>
-      <h1>Phonebook</h1>
-      <Form />
-      <ListTitle>Contacts</ListTitle>
-      <Filter />
-      <Contacts />
-    </Container>
+    <>
+      <AppBar />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/contacts" element={<PhoneBook />}></Route>
+      </Routes>
+    </>
   );
 }
 

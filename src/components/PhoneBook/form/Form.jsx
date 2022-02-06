@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AddButton } from "./Form.styled";
-import { useCreateContactsMutation, useFetchContactsQuery } from "../../contactsSlice";
+import { useCreateContactsMutation, useFetchContactsQuery } from "../../../contactsSlice";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

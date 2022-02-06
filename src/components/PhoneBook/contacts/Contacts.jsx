@@ -1,7 +1,7 @@
 import React from "react";
 import { ContactItem, DeleteButton, Contact } from "./Contacts.styled";
 import { useSelector } from "react-redux";
-import { useFetchContactsQuery, useDeleteContactsMutation } from "../../contactsSlice";
+import { useFetchContactsQuery, useDeleteContactsMutation } from "../../../contactsSlice";
 import { SpinnerDiamond} from 'spinners-react';
 
 

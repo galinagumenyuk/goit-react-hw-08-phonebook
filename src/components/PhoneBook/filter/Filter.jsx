@@ -1,7 +1,7 @@
 import React from "react";
 import { FilterTitle } from "./Filter.styled";
 import { useSelector, useDispatch } from "react-redux";
-import actions from "../../redux/actions";
+import actions from "../../../redux/actions";
 
 
 const Filter = () => {
