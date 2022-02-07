@@ -5,7 +5,7 @@ import authOperations from "../../redux/authOperations";
 
 const Register = () => { 
   const dispatch = useDispatch();
-    const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState('');
 

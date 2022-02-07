@@ -4,6 +4,7 @@ import authSlice from "./authSlice";
 import logger from "redux-logger";
 import {
   persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -13,7 +14,6 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { contactsApi } from "../contactsSlice";
-import persistReducer from "redux-persist/es/persistReducer";
 
 const middleware = [
   ...getDefaultMiddleware({

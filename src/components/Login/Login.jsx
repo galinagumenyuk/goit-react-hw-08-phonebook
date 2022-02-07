@@ -1,14 +1,17 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import authOperations from "../../redux/authOperations";
 
 const Login = () => { 
-        const [name, setName] = useState("");
+  const dispatch = useDispatch();
+    const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
 
     const handleChange = (e) => {
         switch (e.target.name) {
-            case "name":
-                setName(e.target.value);
+            case "password":
+                setPassword(e.target.value);
              break;
             case "email":
                 setEmail(e.target.value);
@@ -19,24 +22,15 @@ const Login = () => {
     };
 
     const onHandleSubmit = (e) => { 
-         e.preventDefault();
+      e.preventDefault();
+       dispatch(authOperations.login({ email, password }));
+      setEmail('');
+      setPassword('');
     }
   
     return (<>
       <h2>Welcome back!</h2>
     <form onSubmit={onHandleSubmit}>
-      <label>
-        name
-        <input
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          value={name}
-          onChange={handleChange}
-        />
-      </label>
       <label>
         email
         <input
@@ -46,8 +40,18 @@ const Login = () => {
           value={email}
           onChange={handleChange}
         />
+        </label>
+         <label>
+        password
+        <input
+          type="text"
+          name="password"
+          required
+          value={password}
+          onChange={handleChange}
+        />
       </label>
-     <button type="button">Log In</button>
+     <button type="submit">Log In</button>
       </form>
       </>
   );
