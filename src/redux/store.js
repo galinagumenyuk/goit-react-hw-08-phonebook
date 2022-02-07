@@ -1,34 +1,38 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import reducer from "./reducer";
-// import logger from "redux-logger";
-// import {
-//   persistStore,
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from "redux-persist";
+import authSlice from "./authSlice";
+import logger from "redux-logger";
+import {
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import { contactsApi } from "../contactsSlice";
+import persistReducer from "redux-persist/es/persistReducer";
 
-// const middleware = [
-//   ...getDefaultMiddleware({
-//     serializableCheck: {
-//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//     },
-//   }),
-//   logger,
-// ];
+const middleware = [
+  ...getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
+  logger,
+];
 
-// const contactsPersistConfig = {
-//   key: "contacts",
-//   storage,
-//   blacklist: ["filter"],
-// };
+const authPersistConfig = {
+  key: "auth",
+  storage,
+  whitelist: ["token"],
+};
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
+    auth: persistReducer(authPersistConfig, authSlice),
     contacts: reducer,
     [contactsApi.reducerPath]: contactsApi.reducer,
   },
@@ -39,6 +43,6 @@ const store = configureStore({
   ],
 });
 
-// const persistor = persistStore(store);
+export const persistor = persistStore(store);
 
-export default store;
+// export default store;

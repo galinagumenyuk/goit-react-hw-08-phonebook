@@ -47,7 +47,7 @@ const Login = () => {
           onChange={handleChange}
         />
       </label>
-     <button type="button">qwe</button>
+     <button type="button">Log In</button>
       </form>
       </>
   );

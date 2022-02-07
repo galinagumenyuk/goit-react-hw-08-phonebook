@@ -1,17 +1,24 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import authOperations from "../../redux/authOperations";
 
 const Register = () => { 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
+  const dispatch = useDispatch();
+    const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState('');
 
     const handleChange = (e) => {
         switch (e.target.name) {
-            case "name":
-                setName(e.target.value);
+            case "password":
+                setPassword(e.target.value);
              break;
             case "email":
                 setEmail(e.target.value);
+            break;
+           case "name":
+                setName(e.target.value);
             break;
             default:
                 return;
@@ -19,13 +26,17 @@ const Register = () => {
     };
 
     const onHandleSubmit = (e) => { 
-         e.preventDefault();
+      e.preventDefault();
+      dispatch(authOperations.register({ name, email, password }));
+      setEmail('');
+      setPassword('');
+      setName('');
     }
   
     return (<>
       <h2>Sign Up Now</h2>
-    <form onSubmit={onHandleSubmit}>
-      <label>
+      <form onSubmit={onHandleSubmit}>
+          <label>
         name
         <input
           type="text"
@@ -46,8 +57,18 @@ const Register = () => {
           value={email}
           onChange={handleChange}
         />
+        </label>
+         <label>
+        password
+        <input
+          type="text"
+          name="password"
+          required
+          value={password}
+          onChange={handleChange}
+        />
       </label>
-     <button type="button">qwe</button>
+     <button type="submit">Sign Up</button>
       </form>
       </>
   );
