@@ -29,7 +29,7 @@ const Contacts = () => {
       {contactsFilter.map((contact) => (
         <Contact key={contact.id}>
           <span>{contact.name}:</span>
-          <span>{contact.phone}</span>
+          <span>{contact.number}</span>
           <DeleteButton
             type="button"
             onClick={()=>deleteContacts(contact.id)}
