@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
 
 axios.defaults.baseURL = "https://connections-api.herokuapp.com";
 
@@ -44,10 +44,10 @@ const logout = createAsyncThunk("auth/logout", async () => {
 
 const refreshCurrentUser = createAsyncThunk(
   "auth/refresh",
-  async (_, { getState }) => {
+  async (_, { getState, rejectWithValue }) => {
     const persistedToken = getState().auth.token;
     if (persistedToken === null) {
-      return;
+      return rejectWithValue();
     }
     token.set(persistedToken);
     try {
