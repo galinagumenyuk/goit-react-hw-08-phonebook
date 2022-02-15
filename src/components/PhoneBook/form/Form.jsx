@@ -26,7 +26,6 @@ function Form() {
   
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    debugger;
 
     if (contacts.find(contact => contact.name === name)) {
       toast(`Contact ${name} is already exists`);
