@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { lazy, Suspense } from "react";
 import { SpinnerDiamond } from "spinners-react";
 import PrivateRoute from "./components/UserMenu/PrivateRoute.js";
+import PublicRoute from "./components/UserMenu/PublicRoute.js";
 
 const Home = lazy(() => import("./components/Home/Home.jsx"));
 const PhoneBook = lazy(() => import("./components/PhoneBook/PhoneBook.jsx"));
@@ -32,9 +33,30 @@ function App() {
         }
       >
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/register" element={<Register />}></Route>
-          <Route path="/login" element={<Login />}></Route>
+          <Route
+            path="/"
+            element={
+              <PublicRoute>
+                <Home />
+              </PublicRoute>
+            }
+          ></Route>
+          <Route
+            path="/register"
+            element={
+              <PublicRoute restricted>
+                <Register />
+              </PublicRoute>
+            }
+          ></Route>
+          <Route
+            path="/login"
+            element={
+              <PublicRoute restricted>
+                <Login />
+              </PublicRoute>
+            }
+          ></Route>
           <Route
             path="/contacts"
             element={
