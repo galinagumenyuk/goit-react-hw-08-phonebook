@@ -1,6 +1,6 @@
 .nav {
   padding: 20px;
-  border-bottom: 1px solid rgb(14, 124, 124);
+  border-bottom: 3px solid rgb(14, 124, 124);
   background-color: rgb(18, 161, 161, 0.3);
   display: flex;
   justify-content: space-between;

@@ -40,7 +40,7 @@ function App() {
                 <Home />
               </PublicRoute>
             }
-          ></Route>
+          />
           <Route
             path="/register"
             element={
@@ -48,7 +48,7 @@ function App() {
                 <Register />
               </PublicRoute>
             }
-          ></Route>
+          />
           <Route
             path="/login"
             element={
@@ -56,7 +56,7 @@ function App() {
                 <Login />
               </PublicRoute>
             }
-          ></Route>
+          />
           <Route
             path="/contacts"
             element={

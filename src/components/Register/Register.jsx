@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import authOperations from "../../redux/authOperations";
+import s from "./Register.module.css"
+
 
 const Register = () => { 
   const dispatch = useDispatch();
@@ -33,11 +35,9 @@ const Register = () => {
       setName('');
     }
   
-    return (<>
-      <h2>Sign Up Now</h2>
-      <form onSubmit={onHandleSubmit}>
-          <label>
-        name
+    return (
+      <form onSubmit={onHandleSubmit} className={s.form}>
+        <h2 className={s.header}>Sign Up Now</h2>
         <input
           type="text"
           name="name"
@@ -46,31 +46,29 @@ const Register = () => {
           required
           value={name}
           onChange={handleChange}
+          placeholder="Name"
+          className={s.input}
         />
-      </label>
-      <label>
-        email
         <input
           type="email"
           name="email"
           required
           value={email}
           onChange={handleChange}
+          placeholder="Email"
+          className={s.input}
         />
-        </label>
-         <label>
-        password
         <input
           type="text"
           name="password"
           required
           value={password}
           onChange={handleChange}
+          placeholder="Password"
+          className={s.input}
         />
-      </label>
-     <button type="submit">Sign Up</button>
-      </form>
-      </>
+     <button type="submit" className={s.button}>Sign Up</button>
+      </form> 
   );
 }
 export default Register;

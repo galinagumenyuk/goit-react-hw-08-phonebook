@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import authOperations from "../../redux/authOperations";
+import s from "./Login.module.css"
 
 const Login = () => { 
   const dispatch = useDispatch();
@@ -28,32 +29,30 @@ const Login = () => {
       setPassword('');
     }
   
-    return (<>
-      <h2>Welcome back!</h2>
-    <form onSubmit={onHandleSubmit}>
-      <label>
-        email
+    return (
+      <form onSubmit={onHandleSubmit} className={s.form}>
+        <h2 className={s.header}>Welcome back!</h2>
+        <p className={s.text}>login here using your email and password</p>
         <input
           type="email"
           name="email"
           required
           value={email}
           onChange={handleChange}
+          placeholder="Email"
+          className={s.input}
         />
-        </label>
-         <label>
-        password
         <input
           type="text"
           name="password"
           required
           value={password}
           onChange={handleChange}
+          placeholder="Password"
+          className={s.input}
         />
-      </label>
-     <button type="submit">Log In</button>
+        <button type="submit" className={s.button}>Log In</button>
       </form>
-      </>
   );
 }
 export default Login;

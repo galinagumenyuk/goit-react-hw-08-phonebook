@@ -10,8 +10,9 @@ const Navigation = () => {
         <div >
             <nav className={s.nav}>
                 <div>
-                <NavLink to='/' className={navData => navData.isActive ? s.active : s.link}>Home</NavLink>
-                <NavLink to='/contacts' className={navData => navData.isActive ? s.active : s.link}>Contacts</NavLink>
+                    <NavLink to='/' className={navData => navData.isActive ? s.active : s.link}>Home</NavLink>
+                    {isLoggedIn && <NavLink to='/contacts' className={navData => navData.isActive ? s.active : s.link}>Contacts</NavLink>}
+                
                 </div>
                 {isLoggedIn ? <UserMenu className={s.userMenu}/> : <div>
                 <NavLink to='/login' className={navData => navData.isActive ? s.active : s.link}>Log In</NavLink>
