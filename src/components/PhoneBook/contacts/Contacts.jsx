@@ -1,14 +1,19 @@
 import React from "react";
-import { ContactItem, DeleteButton, Contact } from "./Contacts.styled";
+import { ContactItem, DeleteButton, Contact, EditButton } from "./Contacts.styled";
 import { useSelector } from "react-redux";
 import { useFetchContactsQuery, useDeleteContactsMutation } from "../../../contactsSlice";
-import { SpinnerDiamond} from 'spinners-react';
+import { SpinnerDiamond } from 'spinners-react';
+import { useState } from "react";
+import ModalWindow from "../Modal/Modal";
 
 
 const Contacts = () => {
 
   const { data: contacts, isFetching } = useFetchContactsQuery();
   const [deleteContacts] = useDeleteContactsMutation();
+  
+  const [showModal, setShowModal] = useState(false);
+  const [editContact, setEditContact] = useState(null);
 
   const contactsFilter = useSelector(state => {
     const { filter } = state.contacts;
@@ -21,6 +26,12 @@ const Contacts = () => {
     };
     return filteredContacts;
   })
+
+  const toggleModal = (id) => {
+    setShowModal((showModal) => !showModal);
+    setEditContact(contacts.filter(item =>  item.id === id
+    )[0]);
+  }
   
   return (
     <>
@@ -36,8 +47,12 @@ const Contacts = () => {
           >
             Delete
           </DeleteButton>
+          <EditButton type="button" onClick={()=>toggleModal(contact.id)}>Edit</EditButton>
         </Contact>
       ))}
+         {showModal && (
+          <ModalWindow contact={editContact } onClose={toggleModal} />
+      )}
     </ContactItem>}</>
   );
 };
