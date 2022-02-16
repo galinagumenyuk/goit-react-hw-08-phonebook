@@ -4,8 +4,10 @@ export const Container = styled.div`
   width: 1000px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 25px;
   padding: 20px 50px;
   background-color: #D0ECE7  ;
+  border: 2px solid rgb(14, 124, 124);
 
   h1 {
     text-align: center;
@@ -42,3 +44,4 @@ export const ListTitle = styled.p`
   font-family: "Times New Roman";
   margin-bottom: 0px;
 `;
+

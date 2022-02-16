@@ -6,13 +6,15 @@ width: 120px;
   margin-top:10px;
   padding: 10px;
   border: none;
+   border-radius: 4px;
 
-  color: black;
+  color: rgb(14, 124, 124);
   font-family: "Times New Roman";
   font-size: 18px;
   box-shadow: 1px 1px 2px #45B39D;
   cursor: pointer;
-  background-color:  #D0ECE7;
+  background-color:  #ffffff;
+  font-weight: 600;
 
    &:hover{
       background-color:  #A2D9CE ;
